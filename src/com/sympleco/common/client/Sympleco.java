@@ -17,7 +17,8 @@ public class Sympleco implements EntryPoint {
 //		rootPanel.add(cv, 5, 5);
 		
 		Grid grid = new Grid(1, 2);
-		rootPanel.add(grid);
+		rootPanel.add(grid, 5, 5);
+		grid.setSize("1005px", "554px");
 		
 //		InlineHTML nlnhtmlSympleSolutions = new InlineHTML("Symple Solutions");
 		grid.setWidget(0, 0, new ToolStripResizer());
