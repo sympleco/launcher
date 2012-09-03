@@ -1,9 +1,11 @@
 package com.sympleco.common.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.smartgwt.client.widgets.menu.events.ClickHandler;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -42,7 +44,23 @@ public class main {
 	/**
 	 * @wbp.parser.entryPoint
 	 */
+	public static void openNewWindow(String name, String url) {
+	    com.google.gwt.user.client.Window.open(url, name.replace(" ", "_"),
+	           "menubar=no," + 
+	           "location=false," + 
+	           "resizable=yes," + 
+	           "scrollbars=yes," + 
+	           "status=no," + 
+	           "dependent=true");
+	}
 	Canvas mainPanel() {
+		Command command = new Command()
+		{
+		    public void execute()
+		    {
+		    	main.openNewWindow("SYMPLECO MAIL LOGIN", "https://mail.google.com/a/sympleco.com");
+		    }
+		};
 		HLayout hLayout = new HLayout();
 
 		VLayout layout = new VLayout();
@@ -58,39 +76,57 @@ public class main {
 		ToolStrip toolStrip = new ToolStrip();
 		toolStrip.setSize("882px", "24px");
 
-		ToolStripButton toolStripButton_about = new ToolStripButton("About");
-//		toolStripButton_about.setWidth("");
-		toolStrip.addButton(toolStripButton_about);
+//		ToolStripButton toolStripButton_about = new ToolStripButton("About");
+////		toolStripButton_about.setWidth("");
+//		toolStrip.addButton(toolStripButton_about);
+//
+//		ToolStripSeparator toolStripSeparator = new ToolStripSeparator();
+//		toolStrip.addMember(toolStripSeparator);
+//
+//		ToolStripButton toolStripButton_product = new ToolStripButton("Product");
+////		toolStripButton_product.setWidth("");
+//		toolStrip.addButton(toolStripButton_product);
+//
+//		ToolStripSeparator toolStripSeparator_1 = new ToolStripSeparator();
+//		toolStrip.addMember(toolStripSeparator_1);
 
-		ToolStripSeparator toolStripSeparator = new ToolStripSeparator();
-		toolStrip.addMember(toolStripSeparator);
+//		ToolStripButton toolStripButton_partner = new ToolStripButton("Partner");
+//		toolStrip.addButton(toolStripButton_partner);
+//
+//		ToolStripSeparator toolStripSeparator_3 = new ToolStripSeparator();
+//		toolStrip.addMember(toolStripSeparator_3);
+//
+//		ToolStripButton toolStripButton_pricing = new ToolStripButton("Pricing");
+//		toolStrip.addButton(toolStripButton_pricing);
+//
+//		ToolStripSeparator toolStripSeparator_4 = new ToolStripSeparator();
+//		toolStrip.addMember(toolStripSeparator_4);
 
-		ToolStripButton toolStripButton_product = new ToolStripButton("Product");
-//		toolStripButton_product.setWidth("");
-		toolStrip.addButton(toolStripButton_product);
+		ToolStripButton toolStripButton_signup = new ToolStripButton("Contact Us");
+		toolStripButton_signup.addClickHandler(new com.smartgwt.client.widgets.events.ClickHandler() {
+			@Override
+			public void onClick(
+					com.smartgwt.client.widgets.events.ClickEvent event) {
+                com.google.gwt.user.client.Window.open("mailto:sales@sympleco.com?subject=Sympleco,Please%20Contact%20Me&body=Contact%20me%20within%203%20days%20for%20services", "Request For Services", null);
+				
+			}
+        });
 
-		ToolStripSeparator toolStripSeparator_1 = new ToolStripSeparator();
-		toolStrip.addMember(toolStripSeparator_1);
-
-		ToolStripButton toolStripButton_partner = new ToolStripButton("Partner");
-		toolStrip.addButton(toolStripButton_partner);
-
-		ToolStripSeparator toolStripSeparator_3 = new ToolStripSeparator();
-		toolStrip.addMember(toolStripSeparator_3);
-
-		ToolStripButton toolStripButton_pricing = new ToolStripButton("Pricing");
-		toolStrip.addButton(toolStripButton_pricing);
-
-		ToolStripSeparator toolStripSeparator_4 = new ToolStripSeparator();
-		toolStrip.addMember(toolStripSeparator_4);
-
-		ToolStripButton toolStripButton_signup = new ToolStripButton("Sign Up");
 		toolStrip.addButton(toolStripButton_signup);
 
 		ToolStripSeparator toolStripSeparator_2 = new ToolStripSeparator();
 		toolStrip.addMember(toolStripSeparator_2);
 
-		ToolStripButton toolStripButton = new ToolStripButton("Sign In");
+		ToolStripButton toolStripButton = new ToolStripButton("Sign In To Mail");
+		
+		toolStripButton.addClickHandler(new com.smartgwt.client.widgets.events.ClickHandler() {
+			@Override
+			public void onClick(
+					com.smartgwt.client.widgets.events.ClickEvent event) {
+                com.google.gwt.user.client.Window.open("https://mail.google.com/a/sympleco.com", "Sympleco Mail", null);
+				
+			}
+        });
 		toolStrip.addButton(toolStripButton);
 
 		ToolStripSeparator toolStripSeparator_5 = new ToolStripSeparator();
@@ -121,38 +157,38 @@ public class main {
 		
 		img.setUrl(imgurl);
 		
-		HLayout hLayout_3 = new HLayout();
-		hLayout_3.setWidth("882px");
-
-		HTMLFlow flwsaasAndCloud = new HTMLFlow("<strong>Solution Providers:</strong><br> \nThrill your customers with embedded dashboards and flexible reporting<br> \n<div style=\"color:#ffffff; padding-top:8px\"><a href=\".\">Get Powered by Sympleco \u00BB</a></div> \n ");
-		flwsaasAndCloud.setSize("30%", "78px");
-		flwsaasAndCloud.setAllowCaching(true);
-		hLayout_3.addMember(flwsaasAndCloud);
-
-		HTMLFlow flwbiAndIt = new HTMLFlow("<strong>IT Developers:</strong><br> \nCheck out our complete Platform as a Service and open REST APIs<br> \n<div style=\"color:#ffffff; padding-top:8px\"><a href=\".\">Learn About our Platform \u00BB</a>");
-		flwbiAndIt.setSize("30%", "78px");
-		hLayout_3.addMember(flwbiAndIt);
-
-		HTMLFlow flwbusinessUsersVisualize = new HTMLFlow("<strong>Business Users: </strong><br> \nVisualize the data that drives your business and drill down for deep insight<br> \n<div style=\"color:#ffffff; padding-top:8px\"><a href=\".\">See Sympleco in Action \u00BB</a>");
-		flwbusinessUsersVisualize.setSize("30%", "78px");
-		hLayout_3.addMember(flwbusinessUsersVisualize);
-		layout.addMember(hLayout_3);
-		
-		HLayout hLayout_4 = new HLayout();
-		hLayout_4.setSize("886px", "16px");
-		
-		HTMLFlow flwprogramManagementSolutions = new HTMLFlow("<bold>Program Management Solutions</bold>\n");
-		flwprogramManagementSolutions.setWidth("30%");
-		hLayout_4.addMember(flwprogramManagementSolutions);
-		
-		HTMLFlow flwipadAndIphone = new HTMLFlow("<bold>iPad and iPhone Solutions</bold>");
-		flwipadAndIphone.setWidth("30%");
-		hLayout_4.addMember(flwipadAndIphone);
-		
-		HTMLFlow flwBusinessProcessDevelopment = new HTMLFlow("Business Process Auomation");
-		flwBusinessProcessDevelopment.setWidth("30%");
-		hLayout_4.addMember(flwBusinessProcessDevelopment);
-		layout.addMember(hLayout_4);
+//		HLayout hLayout_3 = new HLayout();
+//		hLayout_3.setWidth("882px");
+//
+//		HTMLFlow flwsaasAndCloud = new HTMLFlow("<strong>Solution Providers:</strong><br> \nThrill your customers with embedded dashboards and flexible reporting<br> \n<div style=\"color:#ffffff; padding-top:8px\"><a href=\".\">Get Powered by Sympleco \u00BB</a></div> \n ");
+//		flwsaasAndCloud.setSize("30%", "78px");
+//		flwsaasAndCloud.setAllowCaching(true);
+//		hLayout_3.addMember(flwsaasAndCloud);
+//
+//		HTMLFlow flwbiAndIt = new HTMLFlow("<strong>IT Developers:</strong><br> \nCheck out our complete Platform as a Service and open REST APIs<br> \n<div style=\"color:#ffffff; padding-top:8px\"><a href=\".\">Learn About our Platform \u00BB</a>");
+//		flwbiAndIt.setSize("30%", "78px");
+//		hLayout_3.addMember(flwbiAndIt);
+//
+//		HTMLFlow flwbusinessUsersVisualize = new HTMLFlow("<strong>Business Users: </strong><br> \nVisualize the data that drives your business and drill down for deep insight<br> \n<div style=\"color:#ffffff; padding-top:8px\"><a href=\".\">See Sympleco in Action \u00BB</a>");
+//		flwbusinessUsersVisualize.setSize("30%", "78px");
+//		hLayout_3.addMember(flwbusinessUsersVisualize);
+//		layout.addMember(hLayout_3);
+//		
+//		HLayout hLayout_4 = new HLayout();
+//		hLayout_4.setSize("886px", "16px");
+//		
+//		HTMLFlow flwprogramManagementSolutions = new HTMLFlow("<bold>Program Management Solutions</bold>\n");
+//		flwprogramManagementSolutions.setWidth("30%");
+//		hLayout_4.addMember(flwprogramManagementSolutions);
+//		
+//		HTMLFlow flwipadAndIphone = new HTMLFlow("<bold>iPad and iPhone Solutions</bold>");
+//		flwipadAndIphone.setWidth("30%");
+//		hLayout_4.addMember(flwipadAndIphone);
+//		
+//		HTMLFlow flwBusinessProcessDevelopment = new HTMLFlow("Business Process Auomation");
+//		flwBusinessProcessDevelopment.setWidth("30%");
+//		hLayout_4.addMember(flwBusinessProcessDevelopment);
+//		layout.addMember(hLayout_4);
 		return layout;
 	}
 

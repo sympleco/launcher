@@ -43,15 +43,20 @@ public class TimeSheetUI {
 	/**
 	 * @wbp.parser.entryPoint
 	 */
+	Canvas getTimesheetRootLayout(String deviceprofile) {
+		SectionStack sectionStack = new SectionStack();
+		return sectionStack;
+	}
 	Canvas mainPanel() {
-		HLayout hLayout = new HLayout();
-
 		VLayout layout = new VLayout();
 		layout.setAutoHeight();
 		layout.setSize("601px", "417px");
 		
 		SectionStack sectionStack = new SectionStack();
 		layout.addMember(sectionStack);
+		
+		VLayout layout_1 = new VLayout();
+		layout.addMember(layout_1);
 		return layout;
 	}
 
